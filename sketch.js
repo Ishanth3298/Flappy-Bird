@@ -45,8 +45,9 @@ function draw() {
     
     bird.velocityY = bird.velocityY + 0.8;
   
-    if (keyDown("space")) {
+    if (keyDown("space") || touches.length > 0) {
       bird.velocityY = -8;
+      touches = {}
       beep.play();
     }
     
@@ -79,9 +80,10 @@ function draw() {
     pipesGroup.lifetime = -1;
     pipesGroup.destroyEach();
     
-    if (mousePressedOver(start)) {
+    if (mousePressedOver(start) || touches.length>0) {
       gameState = PLAY;
       score = 0;
+      touches = []
     }
   }
   
